@@ -13,16 +13,16 @@ public class Main {
         }
 
         List<Point> result = new ArrayList<>();
-        Point cp = new Point(0,0);
+        Point cp = new Point(0,0);  // current pointの略か？「currentPoint」の方がいい
 
-        while(!points.isEmpty()) {
-            List<Double> mem = new ArrayList<>();
+        while(!points.isEmpty()) {  // メソッドにまとめられない？ またはこのwhile文でどのような処理をしたいのか書くべき。
+            List<Double> mem = new ArrayList<>();  // memoryの略だろうが、何の？ 具体的な名前を書くべき。せめて上の行で処理の流れが書いてあればわかりやすいのに
             for (int i = 0; i < points.size(); i++) {
                 mem.add(cp.distance(points.get(i)));
             }
-            List<Double> sortedMem = new ArrayList<>(mem);
+            List<Double> sortedMem = new ArrayList<>(mem);  // 「残りのすべての点のうち最も近い点を探している」旨をコメントに残すべき
             Collections.sort(sortedMem);
-            int pointsIdx = mem.indexOf(sortedMem.get(0));
+            int pointsIdx = mem.indexOf(sortedMem.get(0));  // 何のポイントのインデックスなのか。「"最も近い"点のインデックス」と命名すべき
             result.add(points.get(pointsIdx));
             cp = points.remove(pointsIdx);
         }
